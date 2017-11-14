@@ -19,12 +19,10 @@ var IgnoreStringInTitle = [
 * You can copy the bibitem to clipboard by simply click on it
 
 ### How to install?
-I only use it on [firefox](https://www.mozilla.org/en-US/firefox/products/) with `GreaseMonkey` adds on, the script can be installed by the [guide](https://openuserjs.org/about/Greasemonkey-for-Firefox).
 
-You may also want to have a look on [how to install for other bowsers](https://openuserjs.org/about/Userscript-Beginners-HOWTO), but may face compatibility problem, since the click-to-copy function is based on Greasemonkey's `GM_setClipboard` function.
-
+Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 ### How to feedback?
-If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://openuserjs.org/scripts/van141.abelgmail.com/MRLookup/issues)
+If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
 

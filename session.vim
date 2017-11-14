@@ -8,7 +8,8 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 ~/MRlookup/mrlookup.js
+badd +28 ~/MRlookup/README.md
+badd +1 ~/MRlookup/mrlookup.js
 argglobal
 silent! argdel *
 $argadd mrlookup.js
@@ -33,7 +34,7 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 2
-normal! 031|
+normal! 0
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
