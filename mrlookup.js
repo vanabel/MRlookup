@@ -1,14 +1,15 @@
 // ==UserScript==
-// @namespace     https://openuserjs.org/users/van141.abelgmail.com
-// @name          MRLookup
-// @description   Extract BibTeX data automatically and modify BibTeX Key to AUTHOR_YEAR_TITLE.
-// @copyright     2017, Van Abel (https://openuserjs.org/users/van141.abelgmail.com)
-// @license       OSI-SPDX-Short-Identifier
-// @version       1.5
-// @include     http://www.ams.org/mrlookup
-// @include     https://mathscinet.ams.org/mrlookup
-// @include     http://www.ams.org/mathscinet/search/publications.html?fmt=bibtex*
-// @grant       GM_setClipboard
+// @namespace         vanabeljs
+// @name              MRLookup
+// @description       Extract BibTeX data automatically and modify BibTeX Key to AUTHOR_YEAR_TITLE.
+// @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
+// @copyright         2017, Van Abel (https://home.vanabel.cn)
+// @license           OSI-SPDX-Short-Identifier
+// @version           1.5
+// @include           http://www.ams.org/mrlookup
+// @include           https://mathscinet.ams.org/mrlookup
+// @include           http://www.ams.org/mathscinet/search/publications.html?fmt=bibtex*
+// @grant             GM_setClipboard
 // ==/UserScript==
 
 // ==OpenUserJS==

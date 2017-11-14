@@ -1,0 +1,67 @@
+	session.vim	/^inoremap <expr> $/;"	m
+<D-j>	session.vim	/^imap <D-j> $/;"	m
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+0	session.vim	/^normal! 0$/;"	m
+;a	session.vim	/^noremap ;a =ip$/;"	m
+;d	session.vim	/^map ;d :YcmCompleter GoToDefinitionElseDeclaration$/;"	m
+;p	session.vim	/^nmap ;p "*p$/;"	m
+;x	session.vim	/^vnoremap ;x "*y$/;"	m
+<F2>	session.vim	/^map <F2> :NERDTreeToggle$/;"	m
+<Plug>(FastFoldUpdate)	session.vim	/^nnoremap <silent> <Plug>(FastFoldUpdate) :FastFoldUpdate!$/;"	m
+<Plug>NERDCommenterAlignBoth	session.vim	/^nnoremap <silent> <Plug>NERDCommenterAlignBoth :call NERDComment("n", "AlignBoth")$/;"	m
+<Plug>NERDCommenterAlignLeft	session.vim	/^nnoremap <silent> <Plug>NERDCommenterAlignLeft :call NERDComment("n", "AlignLeft")$/;"	m
+<Plug>NERDCommenterAppend	session.vim	/^nnoremap <silent> <Plug>NERDCommenterAppend :call NERDComment("n", "Append")$/;"	m
+<Plug>NERDCommenterComment	session.vim	/^nnoremap <silent> <Plug>NERDCommenterComment :call NERDComment("n", "Comment")$/;"	m
+<Plug>NERDCommenterInsert	session.vim	/^inoremap <silent> <Plug>NERDCommenterInsert  <BS>:call NERDComment('i', "insert")$/;"	m
+<Plug>NERDCommenterInvert	session.vim	/^nnoremap <silent> <Plug>NERDCommenterInvert :call NERDComment("n", "Invert")$/;"	m
+<Plug>NERDCommenterMinimal	session.vim	/^nnoremap <silent> <Plug>NERDCommenterMinimal :call NERDComment("n", "Minimal")$/;"	m
+<Plug>NERDCommenterNested	session.vim	/^nnoremap <silent> <Plug>NERDCommenterNested :call NERDComment("n", "Nested")$/;"	m
+<Plug>NERDCommenterSexy	session.vim	/^nnoremap <silent> <Plug>NERDCommenterSexy :call NERDComment("n", "Sexy")$/;"	m
+<Plug>NERDCommenterToEOL	session.vim	/^nnoremap <silent> <Plug>NERDCommenterToEOL :call NERDComment("n", "ToEOL")$/;"	m
+<Plug>NERDCommenterToggle	session.vim	/^nnoremap <silent> <Plug>NERDCommenterToggle :call NERDComment("n", "Toggle")$/;"	m
+<Plug>NERDCommenterUncomment	session.vim	/^nnoremap <silent> <Plug>NERDCommenterUncomment :call NERDComment("n", "Uncomment")$/;"	m
+<Plug>NERDCommenterYank	session.vim	/^nnoremap <silent> <Plug>NERDCommenterYank :call NERDComment("n", "Yank")$/;"	m
+<Plug>NetrwBrowseX	session.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())$/;"	m
+<Plug>NetrwBrowseXVis	session.vim	/^vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()$/;"	m
+Gf	session.vim	/^nnoremap Gf gf$/;"	m
+IgnoreStringInTitle	mrlookup.js	/^var IgnoreStringInTitle = [$/;"	v
+IgnoreStringToRegExp	mrlookup.js	/^function IgnoreStringToRegExp(arr) {$/;"	f
+Q	session.vim	/^nnoremap Q @q$/;"	m
+Q	session.vim	/^vnoremap Q :norm @q$/;"	m
+SessionLoad	session.vim	/^let SessionLoad = 1$/;"	v
+\c	session.vim	/^nmap \\c  <Plug>NERDCommenterToggle$/;"	m
+\c$	session.vim	/^nmap \\c$ <Plug>NERDCommenterToEOL$/;"	m
+\cA	session.vim	/^nmap \\cA <Plug>NERDCommenterAppend$/;"	m
+\ca	session.vim	/^nmap \\ca <Plug>NERDCommenterAltDelims$/;"	m
+\cb	session.vim	/^nmap \\cb <Plug>NERDCommenterAlignBoth$/;"	m
+\cc	session.vim	/^nmap \\cc <Plug>NERDCommenterComment$/;"	m
+\ci	session.vim	/^nmap \\ci <Plug>NERDCommenterInvert$/;"	m
+\cl	session.vim	/^nmap \\cl <Plug>NERDCommenterAlignLeft$/;"	m
+\cm	session.vim	/^nmap \\cm <Plug>NERDCommenterMinimal$/;"	m
+\cn	session.vim	/^nmap \\cn <Plug>NERDCommenterNested$/;"	m
+\cs	session.vim	/^nmap \\cs <Plug>NERDCommenterSexy$/;"	m
+\cu	session.vim	/^nmap \\cu <Plug>NERDCommenterUncomment$/;"	m
+\cy	session.vim	/^nmap \\cy <Plug>NERDCommenterYank$/;"	m
+cp	session.vim	/^noremap cp yap<S-}>p$/;"	m
+els	mrlookup.js	/^var els = document.getElementsByTagName('pre');$/;"	v
+ga	session.vim	/^nmap ga <Plug>(EasyAlign)$/;"	m
+gx	session.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	session.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
+jk	session.vim	/^inoremap jk $/;"	m
+nw	session.vim	/^nnoremap nw $/;"	m
+parseBibTex	mrlookup.js	/^function parseBibTex(text) {$/;"	f
+parseBibTex.result.typeName	mrlookup.js	/^  var result = {$/;"	p
+parseBibTexLine	mrlookup.js	/^function parseBibTexLine(text) {$/;"	f
+s:cpo_save	session.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	session.vim	/^let s:l = 1 - ((0 * winheight(0) + 13) \/ 26)$/;"	v
+s:so_save	session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+wc	session.vim	/^nnoremap wc q$/;"	m
+zt	session.vim	/^normal! zt$/;"	m
+zuz	session.vim	/^nmap zuz <Plug>(FastFoldUpdate)$/;"	m
