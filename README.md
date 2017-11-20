@@ -26,6 +26,10 @@ If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also
 
 ### Update Log
 
+#### Version 1.5.1
+
+* Add `https://mathscinet.ams.org/mathscinet/search/publications.html?fmt=bibtex*`
+
 #### Version 1.5
 
 * Add `https://mathscinet.ams.org/mrlookup`

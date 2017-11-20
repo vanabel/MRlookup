@@ -4,7 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-031|	session.vim	/^normal! 031|$/;"	m
+023|	session.vim	/^normal! 023|$/;"	m
+082|	session.vim	/^normal! 082|$/;"	m
 IgnoreStringInTitle	mrlookup.js	/^var IgnoreStringInTitle = [$/;"	v
 IgnoreStringToRegExp	mrlookup.js	/^function IgnoreStringToRegExp(arr) {$/;"	f
 SessionLoad	session.vim	/^let SessionLoad = 1$/;"	v
@@ -12,7 +13,8 @@ els	mrlookup.js	/^var els = document.getElementsByTagName('pre');$/;"	v
 parseBibTex	mrlookup.js	/^function parseBibTex(text) {$/;"	f
 parseBibTex.result.typeName	mrlookup.js	/^  var result = {$/;"	p
 parseBibTexLine	mrlookup.js	/^function parseBibTexLine(text) {$/;"	f
-s:l	session.vim	/^let s:l = 2 - ((1 * winheight(0) + 13) \/ 26)$/;"	v
+s:l	session.vim	/^let s:l = 12 - ((11 * winheight(0) + 13) \/ 26)$/;"	v
+s:l	session.vim	/^let s:l = 32 - ((17 * winheight(0) + 13) \/ 26)$/;"	v
 s:so_save	session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
 s:sx	session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
 s:wipebuf	session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
