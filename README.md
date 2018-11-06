@@ -25,6 +25,18 @@ Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 1.5.4
+
+* Fix data clean in author field
+
+#### Version 1.5.3
+
+* Modify the rule for active url
+* Add automatical select bibtex item for site with mrlookup in url
+
+#### Version 1.5.2
+
+* Fix the first word ignore rule, change `\s*` to `\s+`
 
 #### Version 1.5.1
 
