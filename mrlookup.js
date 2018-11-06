@@ -105,7 +105,7 @@ for (var i = 0, l = els.length; i < l; i++) {
     audata = audata.replace(/(?:(?:and)?(\w+,\s*\w+\.)(,.*?)?)+/g, '$1');
     //console.log(audata);
 
-    var cleanreg = new RegExp('\\s*and\\s*|[{}\\\\\'\\\\\\"]', 'g');
+    var cleanreg = new RegExp('\\s*and\\s*|[{}\\\\\'"`]', 'g');
     //console.log(cleanreg);
     var au = "";
     while( au!=audata){
