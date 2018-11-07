@@ -106,18 +106,18 @@ for (var i = 0, l = els.length; i < l; i++) {
 		au=audata;
 		audata=au.replace(cleanreg, '');
 	}
-	console.log(au);
+	//console.log(au);
 	//clean author include \v+space and $\cmd$
 	audata = audata.replace(/\\[a-z]\s|(\$.*?\$)|(\\")/gi, '');
-	console.log(audata);
+	//console.log(audata);
 	//remove double "," in one name
 	audata = audata.replace(/(?:(?:and)?(\w+,\s*\w+\.?)(,.*?)?)+/g, '$1');
-	console.log(audata);
+	//console.log(audata);
 	//extract first name
 	au = au.replace(/(?:(\w+),(?:[^,}](?!and))+)+/g, '$1');
 	//remove and
 	au = au.replace(/\s*and\s*/g, '');
-	console.log(au);
+	//console.log(au);
 	/*Extract Year*/
 	var year = bibdata.YEAR.replace(cleanreg, '');
 	//console.log(year);
