@@ -5,11 +5,14 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           1.5.5
+// @version           2.0.0
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
-// @grant             GM_setClipboard
+// @grant            GM_setValue
+// @grant            GM_getValue
+// @grant            GM_registerMenuCommand
+// @grant            GM_setClipboard
 // ==/UserScript==
 
 // ==OpenUserJS==
@@ -143,6 +146,71 @@ function cleanTitle(title) {
 	return '';
 }
 
+// 配置管理
+const CONFIG = {
+	useJournal: GM_getValue('useJournal', true)  // 默认使用期刊缩写
+};
+
+// 注册菜单命令
+GM_registerMenuCommand('Toggle Journal/Title Mode', function() {
+	const currentMode = GM_getValue('useJournal', true);
+	const newMode = !currentMode;
+	GM_setValue('useJournal', newMode);
+	CONFIG.useJournal = newMode;
+	
+	// 显示当前模式
+	const modeText = newMode ? 'Journal Mode' : 'Title Mode';
+	alert('Switched to ' + modeText);
+	
+	// 刷新页面以应用新设置
+	location.reload();
+});
+
+// 添加状态指示器
+function addStatusIndicator() {
+	const indicator = document.createElement('div');
+	indicator.style.cssText = `
+		position: fixed;
+		top: 10px;
+		right: 10px;
+		padding: 5px 10px;
+		background: #f0f0f0;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		font-size: 12px;
+		z-index: 9999;
+	`;
+	indicator.textContent = CONFIG.useJournal ? 'Mode: Journal' : 'Mode: Title';
+	document.body.appendChild(indicator);
+}
+
+// 在页面加载完成后添加状态指示器
+window.addEventListener('load', addStatusIndicator);
+
+// 添加新的期刊处理函数
+function getJournalAbbrev(journal) {
+	if (!journal) return '';
+	
+	// 移除LaTeX命令和特殊字符
+	journal = journal.replace(/\\[a-zA-Z]+/g, '')     // 移除LaTeX命令
+		   .replace(/[{}\\\'"`]/g, '')                // 移除特殊字符
+		   .replace(/\([^)]*\)/g, '')                 // 移除括号内容
+		   .replace(/\{[^}]*\}/g, '')                 // 移除花括号内容
+		   .trim();
+	
+	// 分割成单词
+	let words = journal.split(/[\s.]+/).filter(word => word.length > 0);
+	
+	if (words.length === 1) {
+		// 如果只有一个单词，取前三个字母并转为大写
+		return words[0].slice(0, 3).toUpperCase();
+	} else {
+		// 多个单词时提取大写字母
+		let abbrev = journal.match(/[A-Z]/g);
+		return abbrev ? abbrev.join('') : '';
+	}
+}
+
 var els = document.getElementsByTagName('pre');
 for (var i = 0; i < els.length; i++) {
 	try {
@@ -153,21 +221,29 @@ for (var i = 0; i < els.length; i++) {
 		// 提取作者
 		var author = cleanAuthorName(bibdata.AUTHOR);
 		
-		// 提取年份 - 简化版本
+		// 提取年份
 		var year = '';
 		if (bibdata.YEAR) {
-			// 匹配第一个四位数字
 			let yearMatch = bibdata.YEAR.match(/\d{4}/);
 			if (yearMatch) {
 				year = yearMatch[0];
 			}
 		}
 		
-		// 提取标题
-		var title = cleanTitle(bibdata.TITLE);
+		// 根据配置选择使用期刊缩写还是标题
+		var identifier = '';
+		if (CONFIG.useJournal && bibdata.JOURNAL) {
+			identifier = getJournalAbbrev(bibdata.JOURNAL);
+			// 如果没有获取到期刊缩写，回退到使用标题
+			if (!identifier) {
+				identifier = cleanTitle(bibdata.TITLE);
+			}
+		} else {
+			identifier = cleanTitle(bibdata.TITLE);
+		}
 		
 		// 组合BibTeX键
-		var bibkey = author + year + title;
+		var bibkey = author + year + identifier;
 		
 		// 替换原有的MR号
 		el.innerHTML = el.innerHTML.replace(/MR\d+/g, bibkey);
