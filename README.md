@@ -25,6 +25,14 @@ Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 1.5.5
+
+* Improved author name handling to include all authors' last names
+* Enhanced title word processing with better capitalization
+* Improved year extraction to handle complex formats
+* Added better error handling and logging
+* Fixed URL checking logic
+
 #### Version 1.5.4
 
 * Fix data clean in author field
