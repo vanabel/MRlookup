@@ -31,6 +31,17 @@ Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 3.0.0
+
+* Version bump to 3.0.0.
+* Improved BibTeX parsing: now handles missing matches and converts field names to lowercase for consistency.
+* Added debug mode with test data support.
+* Added a Standardize BibTeX button for manual standardization.
+* Added a debug toggle button to enable/disable debug mode.
+* Added a test data button to fill the dialog with test data when debug mode is on.
+* Added a debug result display to show standardized BibTeX in a popup instead of copying to clipboard when in debug mode.
+* Fixed the mode indicator overlap issue: only one indicator is shown at a time, even after toggling modes.
+
 #### Version 2.0.1
 
 * Fixed compound surname handling to correctly extract the last part of compound surnames
