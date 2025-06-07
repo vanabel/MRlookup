@@ -1,0 +1,31 @@
+name: Sync to Greasy Fork
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'mrlookup.js'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          
+      - name: Install dependencies
+        run: npm install -g greasyfork-sync
+        
+      - name: Sync to Greasy Fork
+        env:
+          GREASYFORK_API_KEY: ${{ secrets.GREASYFORK_API_KEY }}
+        run: |
+          greasyfork-sync \
+            --api-key $GREASYFORK_API_KEY \
+            --script-id 35116 \
+            --file mrlookup.js 
