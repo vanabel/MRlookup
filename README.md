@@ -31,6 +31,11 @@ Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 2.0.1
+
+* Fixed compound surname handling to correctly extract the last part of compound surnames
+* Improved author name extraction for cases like "Mundet i Riera" to use "Riera" instead of "Mundet"
+
 #### Version 2.0.0
 
 * Added journal abbreviation mode as an alternative to title mode

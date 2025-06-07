@@ -5,7 +5,7 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           2.0.0
+// @version           2.0.1
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
@@ -108,8 +108,11 @@ function cleanAuthorName(author) {
 	let lastNames = authors.map(author => {
 		// 提取姓（通常是逗号前的部分）
 		let lastName = author.split(',')[0];
+		// 对于复合姓氏，取最后一部分
+		let nameParts = lastName.split(/\s+/);
+		let finalLastName = nameParts[nameParts.length - 1];
 		// 清理特殊字符
-		return lastName.replace(/[{}\\\s\'"`]/g, '');
+		return finalLastName.replace(/[{}\\\s\'"`]/g, '');
 	});
 	// 拼接所有作者的姓
 	return lastNames.join('');
