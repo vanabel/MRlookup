@@ -5,7 +5,7 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           3.0.1
+// @version           3.0.2
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
@@ -282,7 +282,9 @@ function updateBibTeXEntries() {
 			// Function to format a field with proper alignment
 			const formatField = (name, value) => {
 				const padding = ' '.repeat(maxLength - name.length);
-				return `    ${name}${padding} = {${value}},\n`;
+				// Clean the value and ensure it's properly wrapped in braces
+				const cleanedValue = cleanValue(value);
+				return `    ${name}${padding} = {${cleanedValue}},\n`;
 			};
 
 			// Standardize the format
@@ -723,7 +725,9 @@ function standardizeBibTeX() {
 			// Function to format a field with proper alignment
 			const formatField = (name, value) => {
 				const padding = ' '.repeat(maxLength - name.length);
-				return `    ${name}${padding} = {${value}},\n`;
+				// Clean the value and ensure it's properly wrapped in braces
+				const cleanedValue = cleanValue(value);
+				return `    ${name}${padding} = {${cleanedValue}},\n`;
 			};
 
 			// Standardize the format
@@ -731,7 +735,7 @@ function standardizeBibTeX() {
 			
 			// Add all fields from the input
 			for (const field of fieldNames) {
-				const value = cleanValue(bibdata[field.toLowerCase()]);
+				const value = bibdata[field.toLowerCase()];
 				if (value) {
 					standardized += formatField(field, value);
 				}
