@@ -5,7 +5,7 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           3.0.3
+// @version           3.0.4
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
@@ -229,8 +229,8 @@ function addStatusIndicator() {
 		// Update indicator text
 		this.textContent = newMode ? 'Mode: Journal' : 'Mode: Title';
 		
-		// Force a page reload to ensure all content is updated
-		location.reload();
+		// Update citation keys immediately
+		updateBibTeXEntries();
 	});
 	
 	document.body.appendChild(indicator);
@@ -271,38 +271,29 @@ function updateBibTeXEntries() {
 			// Create new BibTeX key
 			const bibkey = author + year + identifier;
 			
-			// Get all field names from the input, preserving their original case
-			const fieldNames = Object.keys(bibdata).filter(key => 
-				key !== 'typeName' && key !== 'citationKey'
-			).map(key => key.toUpperCase());
-
-			// Find the longest field name for alignment
-			const maxLength = Math.max(...fieldNames.map(name => name.length));
-
-			// Function to format a field with proper alignment
-			const formatField = (name, value) => {
-				const padding = ' '.repeat(maxLength - name.length);
-				// Clean the value and ensure it's properly wrapped in braces
-				const cleanedValue = cleanValue(value);
-				return `    ${name}${padding} = {${cleanedValue}},\n`;
-			};
-
-			// Standardize the format
-			let standardized = `@${bibdata.typeName} {${bibkey},\n`;
+			// Replace the citation key in the original text
+			const originalText = el.innerHTML;
+			const newText = originalText.replace(/@([^{]+){([^,\n]+)[,\n]/, `@$1{${bibkey},`);
 			
-			// Add all fields from the input
-			for (const field of fieldNames) {
-				const value = bibdata[field.toLowerCase()];
-				if (value) {
-					standardized += formatField(field, value);
-				}
-			}
-
-			// Remove trailing comma and add closing brace
-			standardized = standardized.replace(/,\n$/, '\n}');
-
 			// Update the content
-			el.innerHTML = standardized;
+			el.innerHTML = newText;
+			
+			// Add click to copy functionality if not already present
+			if (!el.hasAttribute('data-click-handler')) {
+				el.setAttribute('data-click-handler', 'true');
+				el.addEventListener('click', function() {
+					try {
+						var bibdata_lb = this.innerHTML
+							.replace(/\r|\n/g, '\r\n')
+							.replace(/^\r\n/g, '')
+							.replace(/\s*$/g, '\r\n')
+							.replace(/\r\n\r\n/g, '\r\n');
+						GM_setClipboard(bibdata_lb);
+					} catch (error) {
+						console.error('Error copying to clipboard:', error);
+					}
+				});
+			}
 		} catch (error) {
 			console.error('Error updating BibTeX entry:', error);
 		}
@@ -310,7 +301,14 @@ function updateBibTeXEntries() {
 }
 
 // 在页面加载完成后添加状态指示器
-window.addEventListener('load', addStatusIndicator);
+window.addEventListener('load', function() {
+	addStandardizeButton();
+	addStatusIndicator();
+	addDebugToggle();
+	addTestDataButton();
+	// Update all BibTeX entries on page load
+	updateBibTeXEntries();
+});
 
 // 添加新的期刊处理函数
 function getJournalAbbrev(journal) {
@@ -333,61 +331,6 @@ function getJournalAbbrev(journal) {
 		// 多个单词时提取大写字母
 		let abbrev = journal.match(/[A-Z]/g);
 		return abbrev ? abbrev.join('') : '';
-	}
-}
-
-var els = document.getElementsByTagName('pre');
-for (var i = 0; i < els.length; i++) {
-	try {
-		var el = els[i];
-		var bibdata = parseBibTex(el.innerHTML);
-		if (!bibdata) continue;
-
-		// 提取作者
-		var author = cleanAuthorName(bibdata.author);
-		
-		// 提取年份
-		var year = '';
-		if (bibdata.year) {
-			let yearMatch = bibdata.year.match(/\d{4}/);
-			if (yearMatch) {
-				year = yearMatch[0];
-			}
-		}
-		
-		// 根据配置选择使用期刊缩写还是标题
-		var identifier = '';
-		if (CONFIG.useJournal && bibdata.journal) {
-			identifier = getJournalAbbrev(bibdata.journal);
-			// 如果没有获取到期刊缩写，回退到使用标题
-			if (!identifier) {
-				identifier = cleanTitle(bibdata.title);
-			}
-		} else {
-			identifier = cleanTitle(bibdata.title);
-		}
-		
-		// 组合BibTeX键
-		var bibkey = author + year + identifier;
-		
-		// 替换原有的MR号
-		el.innerHTML = el.innerHTML.replace(/MR\d+/g, bibkey);
-		
-		// 添加点击复制功能
-		el.addEventListener('click', function() {
-			try {
-				var bibdata_lb = this.innerHTML
-					.replace(/\r|\n/g, '\r\n')
-					.replace(/^\r\n/g, '')
-					.replace(/\s*$/g, '\r\n')
-					.replace(/\r\n\r\n/g, '\r\n');
-				GM_setClipboard(bibdata_lb);
-			} catch (error) {
-				console.error('Error copying to clipboard:', error);
-			}
-		});
-	} catch (error) {
-		console.error('Error processing BibTeX entry:', error);
 	}
 }
 
@@ -770,12 +713,4 @@ function standardizeBibTeX() {
 	// Focus textarea
 	textarea.focus();
 }
-
-// Add the buttons when the page loads
-window.addEventListener('load', function() {
-	addStandardizeButton();
-	addStatusIndicator();
-	addDebugToggle();
-	addTestDataButton();
-});
 
