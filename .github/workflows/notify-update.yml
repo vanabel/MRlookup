@@ -1,0 +1,29 @@
+name: Notify Update
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Get version
+        id: get_version
+        run: |
+          VERSION=$(grep -oP '@version\s+\K[0-9.]+' mrlookup.js)
+          echo "::set-output name=version::$VERSION"
+          
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ steps.get_version.outputs.version }}
+          name: Version ${{ steps.get_version.outputs.version }}
+          body: |
+            ## Changes in this version:
+            $(cat README.md | sed -n '/Version ${{ steps.get_version.outputs.version }}/,/Version/p' | sed '$d')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
