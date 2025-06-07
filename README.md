@@ -51,6 +51,11 @@ Now when you push changes to your script, it will automatically sync to Greasy F
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 3.0.3
+
+* Fixed mode toggle to properly update citekeys by forcing page reload
+* Improved mode switching reliability
+
 #### Version 3.0.2
 
 * Fixed key generation when toggling between journal and title modes

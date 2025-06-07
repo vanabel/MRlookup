@@ -5,7 +5,7 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           3.0.2
+// @version           3.0.3
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
@@ -229,8 +229,8 @@ function addStatusIndicator() {
 		// Update indicator text
 		this.textContent = newMode ? 'Mode: Journal' : 'Mode: Title';
 		
-		// Update all BibTeX entries in place
-		updateBibTeXEntries();
+		// Force a page reload to ensure all content is updated
+		location.reload();
 	});
 	
 	document.body.appendChild(indicator);
