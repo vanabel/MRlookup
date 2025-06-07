@@ -22,9 +22,7 @@
 // ==/OpenUserJS==
 
 /**
- *
- * Please begin typing or paste your Userscript now.
- *
+ * Webhook test: Testing automatic sync to Greasy Fork
  */
 
 /*The first word to ignore in title*/
