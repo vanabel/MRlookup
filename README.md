@@ -27,6 +27,26 @@ var IgnoreStringInTitle = [
 
 Just follow the guide at [Greasy Fork](https://greasyfork.org/zh-CN)
 
+### How to setup webhook for developers?
+
+To enable automatic syncing between GitHub and Greasy Fork:
+
+1. Go to [Greasy Fork Webhook Info](https://greasyfork.org/zh-CN/users/webhook-info)
+2. Log in to your Greasy Fork account
+3. Copy the webhook URL and secret provided by Greasy Fork
+
+Then in your GitHub repository:
+
+1. Go to Settings → Webhooks → Add webhook
+2. Configure the webhook:
+   - **Payload URL**: Your Greasy Fork webhook URL
+   - **Content type**: `application/json`
+   - **Secret**: The secret from Greasy Fork
+   - **Events**: Choose "Just the push event"
+   - **Active**: Checked
+
+Now when you push changes to your script, it will automatically sync to Greasy Fork!
+
 ### How to feedback?
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
