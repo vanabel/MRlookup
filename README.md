@@ -51,6 +51,13 @@ Now when you push changes to your script, it will automatically sync to Greasy F
 If you have any suggestion, you can contact me at van141.abel(at)gmail.com. Also, you can initial an [issue](https://github.com/vanabel/mrlookup/issues)
 
 ### Update Log
+#### Version 3.0.1
+
+* Fixed empty citekey issue for AMS MRlookup entries
+* Improved field name handling to maintain case consistency
+* Fixed BibTeX parsing to properly handle entry types
+* Simplified content update logic for better reliability
+
 #### Version 3.0.0
 
 * Version bump to 3.0.0.

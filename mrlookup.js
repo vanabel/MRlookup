@@ -5,7 +5,7 @@
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
-// @version           3.0.0
+// @version           3.0.1
 // @include           */mathscinet/search/publications.html?fmt=bibtex*
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
@@ -246,12 +246,12 @@ function updateBibTeXEntries() {
 			if (!bibdata) continue;
 
 			// Extract author
-			const author = cleanAuthorName(bibdata.AUTHOR);
+			const author = cleanAuthorName(bibdata.author);
 			
 			// Extract year
 			let year = '';
-			if (bibdata.YEAR) {
-				let yearMatch = bibdata.YEAR.match(/\d{4}/);
+			if (bibdata.year) {
+				let yearMatch = bibdata.year.match(/\d{4}/);
 				if (yearMatch) {
 					year = yearMatch[0];
 				}
@@ -259,13 +259,13 @@ function updateBibTeXEntries() {
 			
 			// Get identifier based on current mode
 			let identifier = '';
-			if (CONFIG.useJournal && bibdata.JOURNAL) {
-				identifier = getJournalAbbrev(bibdata.JOURNAL);
+			if (CONFIG.useJournal && bibdata.journal) {
+				identifier = getJournalAbbrev(bibdata.journal);
 				if (!identifier) {
-					identifier = cleanTitle(bibdata.TITLE);
+					identifier = cleanTitle(bibdata.title);
 				}
 			} else {
-				identifier = cleanTitle(bibdata.TITLE);
+				identifier = cleanTitle(bibdata.title);
 			}
 			
 			// Create new BibTeX key
@@ -286,11 +286,11 @@ function updateBibTeXEntries() {
 			};
 
 			// Standardize the format
-			let standardized = '@misc {' + bibkey + ',\n';
+			let standardized = `@${bibdata.typeName} {${bibkey},\n`;
 			
 			// Add all fields from the input
 			for (const field of fieldNames) {
-				const value = cleanValue(bibdata[field.toLowerCase()]);
+				const value = bibdata[field.toLowerCase()];
 				if (value) {
 					standardized += formatField(field, value);
 				}
@@ -299,10 +299,8 @@ function updateBibTeXEntries() {
 			// Remove trailing comma and add closing brace
 			standardized = standardized.replace(/,\n$/, '\n}');
 
-			// Update both the citation key and MR number
-			el.innerHTML = el.innerHTML
-				.replace(/@\w+\s*{\s*[^,]+/, `@${bibdata.typeName} {${standardized}`)
-				.replace(/MR\d+/g, bibkey);
+			// Update the content
+			el.innerHTML = standardized;
 		} catch (error) {
 			console.error('Error updating BibTeX entry:', error);
 		}
@@ -344,12 +342,12 @@ for (var i = 0; i < els.length; i++) {
 		if (!bibdata) continue;
 
 		// 提取作者
-		var author = cleanAuthorName(bibdata.AUTHOR);
+		var author = cleanAuthorName(bibdata.author);
 		
 		// 提取年份
 		var year = '';
-		if (bibdata.YEAR) {
-			let yearMatch = bibdata.YEAR.match(/\d{4}/);
+		if (bibdata.year) {
+			let yearMatch = bibdata.year.match(/\d{4}/);
 			if (yearMatch) {
 				year = yearMatch[0];
 			}
@@ -357,14 +355,14 @@ for (var i = 0; i < els.length; i++) {
 		
 		// 根据配置选择使用期刊缩写还是标题
 		var identifier = '';
-		if (CONFIG.useJournal && bibdata.JOURNAL) {
-			identifier = getJournalAbbrev(bibdata.JOURNAL);
+		if (CONFIG.useJournal && bibdata.journal) {
+			identifier = getJournalAbbrev(bibdata.journal);
 			// 如果没有获取到期刊缩写，回退到使用标题
 			if (!identifier) {
-				identifier = cleanTitle(bibdata.TITLE);
+				identifier = cleanTitle(bibdata.title);
 			}
 		} else {
-			identifier = cleanTitle(bibdata.TITLE);
+			identifier = cleanTitle(bibdata.title);
 		}
 		
 		// 组合BibTeX键
@@ -729,7 +727,7 @@ function standardizeBibTeX() {
 			};
 
 			// Standardize the format
-			let standardized = '@misc {' + bibkey + ',\n';
+			let standardized = `@${bibdata.typeName} {${bibkey},\n`;
 			
 			// Add all fields from the input
 			for (const field of fieldNames) {
