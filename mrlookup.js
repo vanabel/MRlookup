@@ -13,6 +13,8 @@
 // @grant            GM_getValue
 // @grant            GM_registerMenuCommand
 // @grant            GM_setClipboard
+// @downloadURL      https://greasyfork.org/scripts/35116-mrlookup/code/MRLookup.user.js
+// @updateURL        https://greasyfork.org/scripts/35116-mrlookup/code/MRLookup.meta.js
 // ==/UserScript==
 
 // ==OpenUserJS==
