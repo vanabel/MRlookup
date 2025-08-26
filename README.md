@@ -1,6 +1,6 @@
 # MRlookup - MathSciNet BibTeX Standardization Tool
 
-[![Greasy Fork](https://img.shields.io/badge/Greasy%20Fork-v3.0.5-brightgreen.svg)](https://greasyfork.org/scripts/XXXXX-mrlookup)
+[![Greasy Fork](https://img.shields.io/badge/Greasy%20Fork-v3.0.5-brightgreen.svg)](https://greasyfork.org/zh-CN/scripts/35116-mrlookup)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 MRlookup is a powerful userscript that automatically standardizes BibTeX citation keys from MathSciNet articles. It supports both the classic MathSciNet site and the new AMS MathSciNet platform.
@@ -35,7 +35,7 @@ MRlookup is a powerful userscript that automatically standardizes BibTeX citatio
 
 ### Installation
 1. Install a userscript manager (Tampermonkey, Greasemonkey, etc.)
-2. Install the script from [Greasy Fork](https://greasyfork.org/scripts/XXXXX-mrlookup)
+2. Install the script from [Greasy Fork](https://greasyfork.org/zh-CN/scripts/35116-mrlookup)
 3. Navigate to any MathSciNet article page
 4. Click "Cite" and select "BibTeX" format
 5. The citation key will be automatically standardized!
