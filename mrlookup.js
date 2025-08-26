@@ -11,6 +11,9 @@
 // @include           */mathscinet/clipboard.html
 // @include           */mrlookup
 // @include           https://mathscinet.ams.org/*
+// @exclude           https://github.com/*
+// @exclude           https://*.github.com/*
+// @exclude           https://*.github.io/*
 // @grant            GM_setValue
 // @grant            GM_getValue
 // @grant            GM_registerMenuCommand
