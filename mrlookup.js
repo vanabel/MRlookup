@@ -3,6 +3,7 @@
 // @namespace         vanabeljs
 // @description       Extract BibTeX data automatically and modify BibTeX Key to AUTHOR_YEAR_TITLE.
 // @description:ZH-CN 自动提取BibTeX数据并修改BibTeX关键字为AUTHOR_YEAR_TITLE的形式.
+// @author            Van Abel
 // @copyright         2018, Van Abel (https://home.vanabel.cn)
 // @license           OSI-SPDX-Short-Identifier
 // @version           3.0.5
