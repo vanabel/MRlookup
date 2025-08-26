@@ -12,12 +12,15 @@ MRlookup is a powerful userscript that automatically standardizes BibTeX citatio
 - **Real-time Processing**: Works instantly when BibTeX format is selected
 - **Intelligent Parsing**: Extracts author, title, journal, year, and other metadata
 - **Format Preservation**: Maintains all original BibTeX fields while standardizing the key
+- **Cross-Platform**: Works on MathSciNet, arXiv, and other academic platforms
 
 ### 🌐 **Multi-Platform Support**
 - **Classic MathSciNet**: Full support for the original MathSciNet site
 - **New AMS MathSciNet**: Complete support for the new platform at `mathscinet.ams.org`
+- **arXiv**: Support for arXiv BibTeX data standardization
+- **MRlookup.org**: Support for the dedicated MRlookup platform
 - **Automatic Detection**: Automatically detects which site you're using
-- **Seamless Experience**: Same functionality across both platforms
+- **Seamless Experience**: Same functionality across all platforms
 
 ### 🎯 **Enhanced User Experience**
 - **One-Click Standardization**: No manual intervention required
@@ -36,7 +39,7 @@ MRlookup is a powerful userscript that automatically standardizes BibTeX citatio
 ### Installation
 1. Install a userscript manager (Tampermonkey, Greasemonkey, etc.)
 2. Install the script from [Greasy Fork](https://greasyfork.org/zh-CN/scripts/35116-mrlookup)
-3. Navigate to any MathSciNet article page
+3. Navigate to any supported site (MathSciNet, arXiv, MRlookup.org)
 4. Click "Cite" and select "BibTeX" format
 5. The citation key will be automatically standardized!
 
@@ -54,11 +57,21 @@ Original: @article{MR9876543, ...}
 Standardized: @article{Johnson2024AdvancedAlgorithms, ...}
 ```
 
+#### arXiv
+```
+Original: @article{arXiv:2301.12345, ...}
+Standardized: @article{Smith2023QuantumComputing, ...}
+```
+
 ## 🔧 Technical Details
 
 ### Supported Sites
 - **Classic MathSciNet**: `mathscinet.ams.org` (legacy)
 - **New AMS MathSciNet**: `mathscinet.ams.org/mathscinet/`
+- **MathSciNet Publications Search**: `mathscinet.ams.org/mathscinet/publications-search`
+- **MathSciNet 2006 Version**: `mathscinet.ams.org/mathscinet/2006/mathscinet?version=2`
+- **MRlookup.org**: `http://mrlookup.org`
+- **arXiv**: `arxiv.org` (BibTeX standardization)
 
 ### BibTeX Key Format
 ```
