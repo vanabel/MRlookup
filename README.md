@@ -45,13 +45,13 @@ MRlookup is a powerful userscript that automatically standardizes BibTeX citatio
 #### Classic MathSciNet
 ```
 Original: @article{MR1234567, ...}
-Standardized: @article{Smith2023Quantum_Computing, ...}
+Standardized: @article{Smith2023QuantumComputing, ...}
 ```
 
 #### New AMS MathSciNet
 ```
 Original: @article{MR9876543, ...}
-Standardized: @article{Johnson2024Advanced_Algorithms, ...}
+Standardized: @article{Johnson2024AdvancedAlgorithms, ...}
 ```
 
 ## 🔧 Technical Details
@@ -66,7 +66,7 @@ AUTHOR_YEAR_TITLE
 ```
 - **AUTHOR**: First author's last name (cleaned)
 - **YEAR**: Publication year  
-- **TITLE**: First few words of title (cleaned, with underscores for spaces)
+- **TITLE**: First few words of title (cleaned, no spaces or special characters)
 
 ### Citation Modes
 - **Journal Mode**: Uses journal abbreviation as identifier
