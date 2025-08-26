@@ -45,13 +45,13 @@ MRlookup is a powerful userscript that automatically standardizes BibTeX citatio
 #### Classic MathSciNet
 ```
 Original: @article{MR1234567, ...}
-Standardized: @article{Smith_2023_Quantum_Computing, ...}
+Standardized: @article{Smith2023Quantum_Computing, ...}
 ```
 
 #### New AMS MathSciNet
 ```
 Original: @article{MR9876543, ...}
-Standardized: @article{Johnson_2024_Advanced_Algorithms, ...}
+Standardized: @article{Johnson2024Advanced_Algorithms, ...}
 ```
 
 ## 🔧 Technical Details
@@ -65,30 +65,19 @@ Standardized: @article{Johnson_2024_Advanced_Algorithms, ...}
 AUTHOR_YEAR_TITLE
 ```
 - **AUTHOR**: First author's last name (cleaned)
-- **YEAR**: Publication year
-- **TITLE**: First few words of title (cleaned)
+- **YEAR**: Publication year  
+- **TITLE**: First few words of title (cleaned, with underscores for spaces)
+
+### Citation Modes
+- **Journal Mode**: Uses journal abbreviation as identifier
+- **Title Mode**: Uses title keywords as identifier
+- **Toggle**: Switch between modes using the mode indicator button
 
 ### Browser Compatibility
 - Chrome/Chromium (with Tampermonkey)
 - Firefox (with Greasemonkey)
 - Safari (with Userscripts)
 - Edge (with Tampermonkey)
-
-## 📚 Documentation
-
-### Core Documentation
-- **[QUICK_START.md](QUICK_START.md)**: Get started in minutes
-- **[NEW_AMS_SUPPORT.md](NEW_AMS_SUPPORT.md)**: New AMS MathSciNet support details
-- **[TESTING_GUIDE.md](TESTING_GUIDE.md)**: Testing and debugging guide
-
-### Technical Documentation
-- **[CODE_ANALYSIS.md](CODE_ANALYSIS.md)**: Code structure and architecture
-- **[BUTTON_OPTIMIZATION.md](BUTTON_OPTIMIZATION.md)**: UI optimization details
-- **[BUTTON_POSITION_RESTORATION.md](BUTTON_POSITION_RESTORATION.md)**: Button positioning system
-
-### Testing Files
-- **[test_new_ams.html](test_new_ams.html)**: Local testing environment
-- **[test_mrlookup_new_ams.js](test_mrlookup_new_ams.js)**: Standalone testing script
 
 ## 🎨 UI Components
 
@@ -123,8 +112,8 @@ Enable debug mode to access advanced features:
 ## 🧪 Testing
 
 ### Local Testing
-1. Open `test_new_ams.html` in your browser
-2. The script will automatically load and enhance the test modal
+1. Open any MathSciNet article page
+2. The script will automatically enhance citation modals
 3. Test BibTeX standardization and button functionality
 
 ### Real Site Testing
@@ -182,8 +171,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Issues**: Report bugs on GitHub
 - **Feature Requests**: Suggest new features via GitHub issues
-- **Documentation**: Check the documentation files for detailed guides
-- **Testing**: Use the provided test files for local development
+- **Documentation**: Check the README for detailed guides
+- **Testing**: Test on real MathSciNet sites
 
 ---
 
